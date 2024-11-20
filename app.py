@@ -51,7 +51,7 @@ indexHTML = "index.html"
 # Home route
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST':
+    if request.method == 'GET':
         city = request.form['city']
         freq = request.form['freq']
         pollutant = request.form['pollutant']
