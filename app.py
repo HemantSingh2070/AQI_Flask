@@ -69,9 +69,11 @@ def index():
 
 
         # Processing the date column
+        
         air_quality_data['Date'] = pd.to_datetime(air_quality_data['Date'], errors='coerce', dayfirst=True)
         air_quality_data['time'] = "00:00:00"
         air_quality_data['ds'] = air_quality_data['Date'].astype(str) + " " + air_quality_data['time']
+        air_quality_data['ds'] = pd.to_datetime(air_quality_data['ds'], format='mixed', errors='coerce')
         data = pd.DataFrame()
         data['ds'] = pd.to_datetime(air_quality_data['ds'])
 
