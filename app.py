@@ -63,7 +63,10 @@ def index():
             return render_template(indexHTML, cities=cities, error="File not found for the selected city!")
 
         air_quality_data.replace(to_replace=-200, value=np.nan, inplace=True)
-        air_quality_data.fillna(air_quality_data.mean(), inplace=True)
+        # Fill NaN only in numeric columns
+        numeric_cols = air_quality_data.select_dtypes(include='number')
+        air_quality_data[numeric_cols.columns] = numeric_cols.fillna(numeric_cols.mean())
+
 
         # Processing the date column
         air_quality_data['Date'] = pd.to_datetime(air_quality_data['Date'], errors='coerce', dayfirst=True)
