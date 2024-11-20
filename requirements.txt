@@ -2,5 +2,4 @@ flask
 pandas
 numpy
 prophet
-base64
 matplotlib
