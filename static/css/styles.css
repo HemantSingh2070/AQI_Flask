@@ -1,0 +1,25 @@
+*{
+    color: white;
+    background-color: rgb(18, 20, 35);
+    text-align: center;
+    margin: 10px;
+}
+
+h1{
+    font-family: "Marck Script", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;  
+}

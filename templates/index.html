@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/icon.png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Air Quality Prediction App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Marck+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Air Quality Prediction App</h1>
+    <form method="post">
+        <label for="city">Select a City:</label>
+        <select name="city" id="city">
+            {% for city in cities %}
+                <option value="{{ city }}">{{ city }}</option>
+            {% endfor %}
+        </select>
+        <br>
+
+        <label for="pollutant">Select Pollutant:</label>
+        <select name="pollutant" id="pollutant">
+            <option value="AQI">AQI</option>
+            <option value="PM10">PM10</option>
+            <option value="PM2.5">PM2.5</option>
+        </select>
+        <br>
+
+        <label for="freq">Select Prediction Frequency:</label>
+        <select name="freq" id="freq">
+            <option value="D (Daily)">D (Daily)</option>
+            <option value="W (Weekly)">W (Weekly)</option>
+            <option value="M (Monthly)">M (Monthly)</option>
+        </select>
+        <br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if plot_url %}
+        <h3>Forecast Plot:</h3>
+        <img src="data:image/png;base64,{{ plot_url }}" alt="Forecast Plot">
+    {% endif %}
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
